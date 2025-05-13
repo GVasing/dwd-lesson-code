@@ -14,7 +14,6 @@ empty_list = []
 
 print(f"Shopping List: {shopping_list}")
 
-"""
 # Accessing elements (Zero-indexed) and Slicing
 print(f"First item: {shopping_list[0]}")
 print(f"Last item: {shopping_list[-1]}") # Negative indexing
@@ -51,9 +50,11 @@ shopping_list.extend(more_items) # Adds elements from another iterable
 # Alternative: shopping_list = shopping_list + more_items (creates new list)
 print(f"Extended: {shopping_list}")
 
+
 # Sorting (in-place)
 scores.sort()
 print(f"Sorted scores: {scores}")
 scores.sort(reverse=True)
 print(f"Reverse sorted scores: {scores}")
-"""
+shopping_list.sort()
+print(f"Sorted list: {shopping_list}")
