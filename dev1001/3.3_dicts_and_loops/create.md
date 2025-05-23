@@ -26,6 +26,30 @@ One reason to forbid user-defined functions is that we haven't covered them yet!
         # ... more students
     }
     ```
+
+# Results = {
+#    'Bill' : {'English' : 70, 'Maths' : 90, 'P.E.' : 60},
+#    'Steven' : {'English' : 80, 'Maths' : 60, 'P.E.' : 90},
+#    'Anthea' : {'English' : 80, 'Maths' : 80, 'P.E.' : 60},
+#     'George' : {'English' : 75, 'Maths' : 75, 'P.E.' : 75}
+# }
+
+# for Students in Results:
+#     print(f"{Students}")
+#     max = 0
+#     min = 0
+#     for Subject in Results[Students]:
+#         # print(Subject, Results[Students][Subject])
+#         if Results[Students][Subject] > max:
+#             max = Results[Students][Subject]
+#         if min == 0 or Results[Students][Subject] < min:
+#             min = Results[Students][Subject]
+
+#         # if Results[Students][Subject] < max:
+#     print('Max: ', max)
+#     print('Min: ', min)
+
+    
 *   **Advanced Challenge 1.1:**
     *   After printing each student's report, also identify and print their highest-scoring subject and their lowest-scoring subject. If there are ties, any of the tied subjects is fine.
     *   *(Hint: You'll need to iterate through the inner dictionary's items and keep track of the max/min score found so far.)*
@@ -52,6 +76,29 @@ One reason to forbid user-defined functions is that we haven't covered them yet!
         *   If the word is not yet a key, add it to the dictionary with a value of 1.
     5.  After processing all words, print the dictionary of word frequencies.
     6.  Then, print each word and its count in a more readable format (e.g., "word: count").
+
+# text = """
+# This is a sample text. This text is for a sample programming exercise.
+# The exercise is to count words in this text.
+# Ignore case and punctuation for simplicity.
+# """
+# text = text.lower()
+# text = text.replace('.','').replace(',', '')
+# words = text.split()
+
+# empty_dict = {}
+
+# for word in words:
+#     if word in empty_dict:
+#         empty_dict[word] += 1
+#     else:
+#         empty_dict[word] = 1
+
+# print(empty_dict)
+
+# for word, count in empty_dict.items():
+#     print(f"{word} : {count}")
+
 *   **Advanced Challenge 1.2:**
     *   Modify your output to print the words sorted alphabetically.
     *   Then, modify it again to print the words sorted by their frequency (most frequent first). If frequencies are tied, alphabetical order for those words is fine.
@@ -83,6 +130,56 @@ One reason to forbid user-defined functions is that we haven't covered them yet!
             *   If valid, remove the item using `del shopping_list[index]` or `shopping_list.pop(index)`. Inform the user.
         *   **Exit:** Print "Goodbye!" and `break` out of the `while` loop.
         *   **Invalid choice:** Print "Invalid option, please try again."
+
+# shopping_list = []
+
+# while True:
+#     user_input = input("""Choose a number.
+# 1. Add item
+# 2. View list
+# 3. Mark item as purchased (remove)
+# 4. Exit
+# Enter a number: """)
+#     if user_input == '1':
+#         item_choice = input("\nPlease enter your item of choice: \n")
+#         shopping_list.append(item_choice)
+    
+#     elif user_input == '2':
+#         if shopping_list == []:
+#             print("Your list is currently empty\n")
+#         if shopping_list != []:
+#             for index, item in enumerate(shopping_list):
+#                 index += 1
+#                 print(f"Currently in your cart: {index} : {item}")
+    
+#     elif user_input == '3':
+#         if shopping_list == []:
+#             print("Your list is currently empty. Nothing to remove.")
+#         if shopping_list != []:
+#             for index, item in enumerate(shopping_list):
+#                 index += 1
+#                 print(f"Currently in your cart: {index} : {item}")
+#             item_remove = input("\nWhich item would you like to remove? \n")
+#             if item_remove == 'none':
+#                     print("nothing removed")
+#             elif item_remove in shopping_list:
+#                     shopping_list.remove(item_remove)
+#                     print(f"Item {item_remove} removed.")
+#             elif int(item_remove) > len(shopping_list):
+#                  print("Item not found")            
+#             elif int(item_remove) > -1:
+#                  print(f'Going to remove {item_remove} using index: ', int(item_remove))
+#                  del shopping_list[int(item_remove)]
+#             elif item_remove not in shopping_list:
+#                     print("Can't remove item. Not in list \n")
+
+#     elif user_input == '4':
+#         print("Goodbye.")
+#         break
+
+#     else:
+#         print(f"\n{user_input} not recognised. Enter number from list. Please try again.\n")
+
 *   **Advanced Challenge 2.1:**
     *   When adding an item, prevent duplicate entries. If the user tries to add an item already on the list, inform them.
     *   For "Mark as purchased", allow the user to type the *name* of the item to remove instead of its number. Handle cases where the item name isn't found.
@@ -114,6 +211,35 @@ One reason to forbid user-defined functions is that we haven't covered them yet!
         *   Initialize a variable `total_logins` to 0.
         *   Iterate through the `users` list and sum up all `logins_last_month`.
         *   Print the `total_logins`.
+
+        # inactive_user_ids = []
+
+# for user_logins in users:
+#     # print(inactive_user_ids['logins_last_month'])
+#     if user_logins['logins_last_month'] < 5:
+#         # print(user_logins["logins_last_month"])
+#         inactive_user_ids.append(user_logins['id'])
+# print(inactive_user_ids)
+
+# needs_verification_reminder = []
+
+# for user_email in users:
+#     if user_email['email_verified'] == False:
+#         needs_verification_reminder.append(user_email['name'])
+        
+# print(f"Reminder sent to {needs_verification_reminder[0]} to verify email")
+# print(f"Reminder sent to {needs_verification_reminder[1]} to verify email")
+
+# total_logins = 0
+
+# # for total in users:
+# #     if user_logins['logins_last_month'] < 5:
+# #         inactive_user_ids.append(user_logins['id'])
+
+# for logins in users:
+#     total_logins = sum(logins['logins_last_month'] for logins in users)
+# print(total_logins)
+
 *   **Advanced Challenge 2.2:**
     *   Identify the "Most Active User" (user with the highest `logins_last_month`). Print their name and login count. If there's a tie, any of the top users is fine.
     *   Create a new dictionary `engagement_segments` where keys are "low", "medium", "high" and values are lists of user IDs belonging to that segment (e.g., low: 0-9 logins, medium: 10-19, high: 20+).
