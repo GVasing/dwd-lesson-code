@@ -26,6 +26,7 @@ def calculate_shipping_cost(weight_kg, destination_zone="metro", base_rate_per_k
     surcharge = 0.0
 
     # TODO 1: Calculate the base cost (weight_kg * base_rate_per_kg)
+    base_cost = weight_kg * base_rate_per_kg
     
     # TODO 2: Determine the surcharge based on destination_zone.
     # Use if-elif-else or match-case.
@@ -34,12 +35,40 @@ def calculate_shipping_cost(weight_kg, destination_zone="metro", base_rate_per_k
     # 'remote': surcharge = 10.0
     # (Optional: handle an unknown zone, e.g., print a message and use metro surcharge)
 
+    if destination_zone == "metro":
+        surcharge += 0
+    elif destination_zone == "regional":
+        surcharge += 5
+    elif destination_zone == "remote":
+        surcharge += 10
+    else:
+        surcharge == 0
+        print("Zone Unknown. Metro surchage applied.")
+
+    # OR
+
+    # Use Match Case
+
+    # match (destination_zone):
+    #     case "metro":
+    #         pass
+    #     case "regional":
+    #         surcharge = 5.0
+    #     case "remote":
+    #         surcharge = 10
+    #     case _:
+    #         surcharge = 0
+    #         print("Zone Unknown. Metro surchage applied.")
+
+
     # TODO 3: Calculate the total shipping_cost (base_cost + surcharge)
 
-    # TODO 4: Return the total shipping_cost
+    shipping_cost = base_cost + surcharge
 
+    # TODO 4: Return the total shipping_cost
+    return shipping_cost
     # Remove the 'pass' statement below when you start coding
-    pass
+    
 
 # --- Main part of the script (provided) ---
 # Call 1: Positional arguments

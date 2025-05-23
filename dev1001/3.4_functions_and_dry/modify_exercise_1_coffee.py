@@ -15,12 +15,23 @@ def calculate_bulk_coffee_order_total():
     """
     total_cost = 0.0
     # TODO 1: Calculate the base cost of all coffees (price_per_coffee * number_of_coffees)
+    # 3.50 x 8
+    base_cost = price_per_coffee * number_of_coffees
     # TODO 2: Check if number_of_coffees is greater than service_fee_threshold
+    #  number of coffees = 8 is greater than 5 so service fee threshold
+    if number_of_coffees > service_fee_threshold:
+        
     # TODO 3: If it is, add the fixed_service_fee to the total_cost
+    # $2 added on top of total
+        total_cost = base_cost + fixed_service_fee
+
     # TODO 4: Return the final total_cost
+    # total cost is $3.5 x 8 = $28 + $2 = $30
+    else:
+        total_cost = base_cost
 
     # Remove the 'pass' statement below when you start coding
-    pass
+    return total_cost
 
 # --- Main part of the script (provided) ---
 order_total = calculate_bulk_coffee_order_total()
