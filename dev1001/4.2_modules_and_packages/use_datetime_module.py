@@ -11,9 +11,9 @@ print(f"Current date and time: {now}")
 today = datetime.date.today()
 print(f"Today's date: {today}")
 
-# Format the date and time
-formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-print(f"Formatted current time: {formatted_time}")
+# # Format the date and time
+# formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+# print(f"Formatted current time: {formatted_time}")
 
 formatted_date = today.strftime("%A, %B %d, %Y")
 print(f"Formatted today's date: {formatted_date}")
