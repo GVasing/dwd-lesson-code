@@ -1,30 +1,42 @@
-class GameError(Exception):
+class LockedItemError(Exception):
+
+    """Raised when a weapon is locked and cannot be used yet."""
+
     pass
 
-class InvalidCommand(GameError):
-    pass
+ 
 
-class LowHealth(GameError):
-    pass
+available_weapons = ["sword", "bow", "staff"]
 
-class GameEngine:
-    def __init__(self, player_health):
-        self.health = player_health
+locked_weapons = ["legendary sword"]
 
-    def run_turn(self, command, data_file):
-        try:
-            with open(data_file, "r") as f:
-                data = f.read()
-            if command not in ["look", "move", "attack"]:
-                raise InvalidCommand(f"Unknown command: {command}")
-            if self.health < 10:
-                raise LowHealth("Health is dangerously low.")
-            print(f"Command {command} with data: {data}")
-        except FileNotFoundError:
-            print("Turn failed: Missing game data.")
-        except InvalidCommand as ic:
-            print(f"Turn failed: {ic}")
-        except LowHealth as lh:
-            print(f"Turn failed: {lh}")
-        except Exception as e:
-            print(f"Unexpected error: {e}")
+ 
+
+def choose_weapon(weapon):
+
+    if weapon in available_weapons:
+        return f"You have chosen the {weapon}!"
+
+    if weapon in locked_weapons:
+
+        raise LockedItemError("This weapon is locked and cannot be used yet.")
+    else:
+        raise ValueError("That weapon is not available!")
+
+ 
+
+try:
+
+    weapon_choice = input("Choose your weapon (sword, bow, staff): ").strip().lower()
+
+    result = choose_weapon(weapon_choice)
+
+    print(result)
+
+except ValueError as e:
+
+    print(e)
+
+except LockedItemError as e:
+
+    print(e)
