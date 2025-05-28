@@ -23,43 +23,51 @@ Create a class called `Product`.
 4.  Add a method `calculate_total_value(self)` that returns the total value
     of this product currently in stock (price * quantity_in_stock).
 
-Instructions:
-- Fill in the `Product` class structure below.
-- After defining the class, create at least two `Product` objects.
-- Call all the methods on your objects to test them.
-- Print the value returned by `calculate_total_value`.
-
-Example Usage (you can uncomment and adapt this after defining your class):
-# item1 = Product("Laptop", 999.99, 50)
-# item2 = Product("Mouse", 25.50, 200)
-
-# item1.display_product_info()
-# item2.display_product_info()
-
-# item1.update_stock(45)
-# item1.display_product_info()
-
-# total_value_item1 = item1.calculate_total_value()
-# print(f"Total stock value for {item1.name}: ${total_value_item1:.2f}")
-
-# total_value_item2 = item2.calculate_total_value()
-# print(f"Total stock value for {item2.name}: ${total_value_item2:.2f}")
 """
 
 # --- Your Product class definition goes here ---
 class Product:
     # TODO: Implement the __init__ method
-    pass
+    def __init__(self, name, price, quantity_in_stock):
+        self.name = name
+        self.price = price
+        self.quantity_in_stock = quantity_in_stock
 
     # TODO: Implement the display_product_info method
-    pass
+    def display_product_info(self):
+        print(f"Product: {self.name}, Price: {self.price}, Stock: {self.quantity_in_stock}")
 
     # TODO: Implement the update_stock method
-    pass
+    def update_stock(self, new_quantity):
+        self.quantity_in_stock = new_quantity
+        print(f"Stock for {self.name} has changed to {new_quantity} units")
 
     # TODO: Implement the calculate_total_value method
-    pass
+    def calculate_total_value(self):
+        return self.price * self.quantity_in_stock
 
+# Instructions:
+# - Fill in the `Product` class structure below.
+# - After defining the class, create at least two `Product` objects.
+# - Call all the methods on your objects to test them.
+# - Print the value returned by `calculate_total_value`.
+
+# Example Usage (you can uncomment and adapt this after defining your class):
+
+item1 = Product("Laptop", 999.99, 50)
+item2 = Product("Mouse", 25.50, 200)
+
+item1.display_product_info()
+item2.display_product_info()
+
+item1.update_stock(45)
+item1.display_product_info()
+
+total_value_item1 = item1.calculate_total_value()
+print(f"Total stock value for {item1.name}: ${total_value_item1:.2f}")
+
+total_value_item2 = item2.calculate_total_value()
+print(f"Total stock value for {item2.name}: ${total_value_item2:.2f}")
 
 # --- Test your Product class here ---
 # print("--- Testing Product Class ---")

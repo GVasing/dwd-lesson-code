@@ -83,17 +83,60 @@ class Book:
         self.title = title
         self.author = author
         self.pages = pages
-        print(f"Book '{self.title}' by {self.author} created.")
+        # print(f"Book '{self.title}' by {self.author} created.")
 
     def display_info(self):
         print(f"Title: {self.title}, Author: {self.author}, Pages: {self.pages}")
 
 # --- Your LibraryBook class definition goes here (Child) ---
-# TODO: Define the LibraryBook class, inheriting from Book
 class LibraryBook(Book): # Example of inheritance
-    # TODO: Implement __init__, check_out, return_book, and override display_info
-    pass
+    def __init__(self, title, author, pages, shelf_location, is_checked_out = False):
+        super().__init__(title, author, pages)
+        self.shelf_location = shelf_location
+        self.is_checked_out = is_checked_out
 
+    def check_out(self):
+        if self.is_checked_out:
+            print(f"Unfortunately, {self.title} is already checked out")
+
+        else:
+            self.is_checked_out = True
+            print(f"{self.title} has been successfully checked out.")
+            # if self.is_checked_out == False:
+            #     print(f"Unfortunately, {self.title} is already checked out")
+    
+    def return_book(self):
+        if not self.is_checked_out:
+            print(f"{self.title} was not checked out and is already in stock.")
+        else: 
+            self.is_checked_out = False
+            print(f"Thank you for returning {self.title}")
+    
+    def display_info(self):
+        super().display_info()
+        print(f"Shelf Location: {self.shelf_location}")
+        status = "Checked Out" if self.is_checked_out else "Available"
+        print(f"Checkout Status: {status}")
+
+book1 = LibraryBook("The Great Gatsby", "F. Scott Fitzgerald", 180, "FIC-FITZ-01", False)
+book2 = LibraryBook("1984", "George Orwell", 328, "DYS-ORW-01") # is_checked_out defaults to False
+
+book1.display_info()
+book2.display_info()
+print("-" * 20)
+
+book1.check_out()
+book1.check_out() # Try checking out again
+book1.display_info()
+print("-" * 20)
+
+book2.return_book() # Try returning a book not checked out
+book2.check_out()
+book2.display_info()
+print("-" * 20)
+
+book1.return_book()
+book1.display_info()
 
 # --- Test your LibraryBook class here ---
 # print("\n--- Testing LibraryBook Class ---")
